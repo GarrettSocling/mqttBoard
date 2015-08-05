@@ -2,14 +2,27 @@
   "panels" : [
     {
       "name" : "panel1",
-      "toppic" : "/temp1",
+      "topic" : "/temp1",
       "display" : {
         "type" : "chart",
         "config" : {
-          "horizontal" : "data",
+          "horizontal" : "payload",
           "horizontal_text" : "Temp",
           "vertical" : "time",
-          "vertical_text" : "Time" 
+          "vertical_text" : "Time"
+        }
+      }
+    },
+    {
+      "name" : "panel2",
+      "topic" : "/temp2",
+      "display" : {
+        "type" : "chart",
+        "config" : {
+          "horizontal" : "payload",
+          "horizontal_text" : "Temp",
+          "vertical" : "time",
+          "vertical_text" : "Time"
         }
       }
     }

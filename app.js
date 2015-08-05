@@ -17,7 +17,7 @@ var client  = mqtt.connect('mqtt://'+cfg.mqttClient.host);
 client.on('connect', function () {
   mqtt_logger.debug("Mqtt connected: "+cfg.mqttClient.host);
   for (var panel in panels_cfg.panels) {
-    var topic = panels_cfg.panels[panel].toppic;
+    var topic = panels_cfg.panels[panel].topic;
     mqtt_logger.debug("Subscribing to: "+topic)
     client.subscribe(topic);
   }
@@ -27,7 +27,7 @@ client.on('message', function (topic, message) {
   // message is Buffer
   mqtt_logger.debug("Got message on: "+topic)
   console.log(message.toString());
-  io.emit('topicData', { "topic": topic, "time" : new Date().getTime() , "payload" : message.toString()});
+  io.emit('topicData_'+topic, { "topic": topic, "time" : new Date().getTime() , "payload" : message.toString()});
 });
 
 // the express stuff
@@ -42,6 +42,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 io.on('connection', function (socket) {
   io_logger.debug("Got connection from: "+socket.id);
+  socket.emit('panelsCfg',panels_cfg);
 });
 
 // handlebars stuff
