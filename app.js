@@ -28,7 +28,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // bower
-app.use('/public',  express.static(__dirname + '/public'));
+app.use('/bower',  express.static(__dirname + '/views/bower'));
 
 app.get('/', function (req, res) {
   res.render('home');

@@ -9,8 +9,10 @@ module.exports = function (grunt) {
     bower: {
       install: {
         options: {
-          "targetDir": "./public/bower",
-          "verbose" : true
+          "targetDir": "./views/bower",
+          "verbose" : true,
+          "cleanBowerDir" : true,
+          "cleanTargetDir" : true
         }
       }
     }
