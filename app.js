@@ -34,6 +34,21 @@ var exp_logger = log4js.getLogger('[express]');
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
+
+// io
+var io_logger = log4js.getLogger('[socket io]');
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+io.on('connection', function (socket) {
+
+  io_logger.debug("Got connection from: "+socket.id);
+
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
 // handlebars stuff
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -46,7 +61,7 @@ app.get('/', function (req, res) {
   res.render('home');
 });
 
-var server = app.listen(cfg.express.port, function () {
+server.listen(cfg.express.port, function () {
   var host = server.address().address;
   var port = server.address().port;
 
