@@ -23,8 +23,12 @@ var exp_logger = log4js.getLogger('[express]');
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
+// handlebars stuff
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+// bower
+app.use('/public',  express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
   res.render('home');

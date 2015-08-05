@@ -1,15 +1,23 @@
 module.exports = function (grunt) {
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     supervisor: {
       target: {
         script: "app.js"
       }
+    },
+    bower: {
+      install: {
+        options: {
+          "targetDir": "./public/bower",
+          "verbose" : true
+        }
+      }
     }
   });
 
-  grunt.option('debug', true);
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks("grunt-supervisor");
 
-  grunt.registerTask('default', ['supervisor']);
+  grunt.registerTask('default', ['bower','supervisor']);
 };

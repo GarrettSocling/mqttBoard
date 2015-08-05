@@ -1,0 +1,25 @@
+{
+  "name": "mqttBoard",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tuxBurner/mqttBoard",
+  "authors": [
+    "Sebastian Hardt <sebasth@gmx.de>"
+  ],
+  "main": "app.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.4",
+   "seiyria-bootstrap-slider": "~4.8.3"
+  }
+}
