@@ -5,6 +5,11 @@ $(function() {
     console.log(data);
   });*/
 
+  Highcharts.setOptions({
+ 		global: {
+ 			useUTC: false
+ 		}
+ 	});
 
   $('#container').highcharts({
     title: { text: 'Real Time Samples' },
@@ -45,13 +50,12 @@ $(function() {
             data: (function() {
                 // generate some points to render before real samples arrive from feed
                 var data = [];
+                var time = (new Date()).getTime()
 
-                var time = (new Date()).getTime(),
-                   i;
                // 20 samples, starting 19 ms ago up to present time when feed starts plotting
-               for (i = -19; i <= 0; i++) {
+               for (var i = -20; i <= 0; i++) {
                    data.push({
-                       x: time + (i * 1000),
+                       x: time + (i * 10),
                        y: 0
                    });
                }
