@@ -27,6 +27,7 @@ client.on('message', function (topic, message) {
   // message is Buffer
   mqtt_logger.debug("Got message on: "+topic)
   console.log(message.toString());
+  io.emit('topicData', { "topic": topic, "time" : new Date().getTime() , "payload" : message.toString()});
 });
 
 // the express stuff
@@ -40,13 +41,7 @@ var io_logger = log4js.getLogger('[socket io]');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 io.on('connection', function (socket) {
-
   io_logger.debug("Got connection from: "+socket.id);
-
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
 });
 
 // handlebars stuff
