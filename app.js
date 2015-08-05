@@ -12,10 +12,21 @@ logger.debug(cfg);
 // init the mqtt client
 var mqtt_logger = log4js.getLogger('[mqtt]');
 var mqtt    = require('mqtt');
+var panels_cfg = require('./panels.json');
 var client  = mqtt.connect('mqtt://'+cfg.mqttClient.host);
-
 client.on('connect', function () {
   mqtt_logger.debug("Mqtt connected: "+cfg.mqttClient.host);
+  for (var panel in panels_cfg.panels) {
+    var topic = panels_cfg.panels[panel].toppic;
+    mqtt_logger.debug("Subscribing to: "+topic)
+    client.subscribe(topic);
+  }
+});
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  mqtt_logger.debug("Got message on: "+topic)
+  console.log(message.toString());
 });
 
 // the express stuff
@@ -29,6 +40,7 @@ app.set('view engine', 'handlebars');
 
 // bower
 app.use('/bower',  express.static(__dirname + '/views/bower'));
+app.use('/public',  express.static(__dirname + '/views/public'));
 
 app.get('/', function (req, res) {
   res.render('home');

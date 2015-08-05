@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         options: {
           "targetDir": "./views/bower",
           "verbose" : true,
-          "cleanBowerDir" : true,
+          //"cleanBowerDir" : true,
           "cleanTargetDir" : true
         }
       }

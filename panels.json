@@ -1,0 +1,17 @@
+{
+  "panels" : [
+    {
+      "name" : "panel1",
+      "toppic" : "/temp1",
+      "display" : {
+        "type" : "chart",
+        "config" : {
+          "horizontal" : "data",
+          "horizontal_text" : "Temp",
+          "vertical" : "time",
+          "vertical_text" : "Time" 
+        }
+      }
+    }
+  ]
+}
