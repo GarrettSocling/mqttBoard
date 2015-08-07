@@ -1,9 +1,9 @@
 {
-  "mqttClient" : {
-    "host" :  "192.168.0.3"
+  "mqttClient": {
+    "host": "192.168.0.3"
   },
 
-  "express" : {
-    "port" : "8080"
+  "express": {
+    "port": "8080"
   }
 }
