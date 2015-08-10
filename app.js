@@ -63,7 +63,11 @@ app.use('/bower', express.static(__dirname + '/views/bower'));
 app.use('/public', express.static(__dirname + '/views/public'));
 
 app.get('/', function(req, res) {
-  res.render('home');
+  res.render('home', {
+    'ioHost' : req.hostname,
+    'ioPort' : cfg.express.port,
+    'ioProtocol' : req.protocol
+    });
 });
 
 server.listen(cfg.express.port, function() {

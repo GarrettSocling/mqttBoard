@@ -8,7 +8,7 @@ $(function() {
     }
   });
 
-  socket = io('http://localhost:8080');
+  socket = io(ioProtocol+'://'+ioHost+':'+ioPort);
   socket.on('panelsCfg', function(data) {
     for (panelIdx in data.panels) {
       var panel = data.panels[panelIdx];
