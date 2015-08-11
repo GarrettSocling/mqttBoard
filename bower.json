@@ -20,6 +20,8 @@
   ],
   "dependencies": {
     "bootstrap": "3.3.4",
-    "highcharts": "~4.1.7"
+    "highcharts": "~4.1.7",
+    "admin-lte": "~2.2.0",
+    "components-font-awesome": "~4.4.0"
   }
 }

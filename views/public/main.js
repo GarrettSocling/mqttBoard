@@ -22,7 +22,7 @@ $(function() {
 var createChart = function(panel) {
   console.log(panel)
   var panelDivName = panel.name + '_container';
-  $('body').append('<div id="' + panelDivName + '"></div>');
+  $('div.chart').append('<div id="' + panelDivName + '"></div>');
 
   $('#' + panelDivName).highcharts({
     title: {
